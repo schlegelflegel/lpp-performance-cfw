@@ -6,14 +6,15 @@ void app_timer_event() {}
 void app_surface_event(u8 t, u8 p, u8 v) {
 	hal_plot_led(TYPEPAD, 11, 63, 63, 63);
 
-	/**(u8*)0x08005158 = '#';
+	// This is just an attempt which doesn't work. FW will poweroff here. Remove writes to not poweroff.
+	*(u8*)0x08005158 = '#';
 	*(u8*)0x08005159 = 'H';
 	*(u8*)0x0800515A = 'a';
 	*(u8*)0x0800515B = 'c';
 	*(u8*)0x0800515C = 'k';
 	*(u8*)0x0800515D = 'i';
 	*(u8*)0x0800515E = 'n';
-	*(u8*)0x0800515F = 'g';*/
+	*(u8*)0x0800515F = 'g';
 
 	hal_plot_led(TYPEPAD, 12, 63, 63, 63);
 
