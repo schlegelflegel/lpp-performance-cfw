@@ -32,7 +32,7 @@ SOURCES += src/sysex/sysex.c
 SOURCES += src/other/conversion.c src/other/tempo.c
 
 SOURCES += src/modes/mode.c
-SOURCES += src/modes/normal/performance.c src/modes/normal/ableton.c src/modes/normal/note.c src/modes/normal/drum.c src/modes/normal/fader.c src/modes/normal/programmer.c src/modes/normal/piano.c src/modes/normal/custom.c src/modes/normal/text.c
+SOURCES += src/modes/normal/performance.c src/modes/normal/ableton.c src/modes/normal/note.c src/modes/normal/drum.c src/modes/normal/fader.c src/modes/normal/programmer.c src/modes/normal/piano.c src/modes/normal/custom.c src/modes/normal/sequencer.c src/modes/normal/text.c
 SOURCES += src/modes/special/boot.c src/modes/special/setup.c src/modes/special/editor.c src/modes/special/scale.c src/modes/special/puyo.c src/modes/special/idle.c
 
 SOURCES += src/app.c
@@ -65,7 +65,7 @@ LDSCRIPT = stm32_flash.ld
 
 LDFLAGS += -T$(LDSCRIPT) -u _start -u _Minimum_Stack_Size  -mcpu=cortex-m3 -mthumb -specs=nano.specs -specs=nosys.specs -nostdlib -Wl,-static -N -nostartfiles -Wl,--gc-sections
 
-all: $(SYX)
+all: $(BIN)
 
 # build the final sysex file from the ELF - run the simulator first
 $(SYX): $(BIN)

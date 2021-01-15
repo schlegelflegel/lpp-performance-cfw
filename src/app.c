@@ -122,5 +122,6 @@ void app_sysex_event(u8 port, u8 *d, u16 l) {
 
 void app_init(const u16 *adc_raw) {
 	flash_read();
-	mode_update(mode_boot);
+	//mode_update(mode_boot);
+	mode_update(mode_sequencer);
 }
