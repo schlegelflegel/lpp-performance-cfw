@@ -27,8 +27,8 @@
 #define mode_piano 6
 #include "modes/normal/piano.h"
 
-#define mode_sequencer 7
-#include "modes/normal/sequencer.h"
+#define mode_sequencing 7
+#include "modes/normal/sequencing.h"
 
 #define mode_custom 8
 #include "modes/normal/custom.h"

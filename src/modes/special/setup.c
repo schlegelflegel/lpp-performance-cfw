@@ -225,7 +225,7 @@ void setup_init() {
 	rgb_led(72, mode_fader_r >> 2, mode_fader_g >> 2, mode_fader_b >> 2); // Fader mode
 	rgb_led(73, mode_programmer_r >> 2, mode_programmer_g >> 2, mode_programmer_b >> 2); // Programmer mode
 	rgb_led(61, mode_piano_r >> 2, mode_piano_g >> 2, mode_piano_b >> 2); // Piano mode
-	rgb_led(62, mode_sequencer_r >> 2, mode_sequencer_g >> 2, mode_sequencer_b >> 2); // Sequencer mode
+	rgb_led(62, mode_sequencing_r >> 2, mode_sequencing_g >> 2, mode_sequencing_b >> 2); // Sequencing mode
 	rgb_led(63, mode_custom_r >> 2, mode_custom_g >> 2, mode_custom_b >> 2); // Custom mode
 
 	switch (mode_default) {
@@ -258,7 +258,7 @@ void setup_init() {
 			break;
 
 		case 7:
-			rgb_led(62, mode_sequencer_r, mode_sequencer_g, mode_sequencer_b); // Sequencer mode selected
+			rgb_led(62, mode_sequencing_r, mode_sequencing_g, mode_sequencing_b); // Sequencing mode selected
 			break;
 
 		case 8:

@@ -44,6 +44,18 @@
 #include "other/tempo.h"
 #include "sysex/sysex.h"
 
+
+#define DEBUG_VAR(y, var) do {									\
+	unsigned int i, j;											\
+	for (i = 0; i < sizeof(var) * 8; i++) {						\
+		j = (var) & (1 << i) ? 63 : 0;							\
+		hal_plot_led(TYPEPAD,									\
+			18 - (i % 8) + (i / 8 + y) * 10,					\
+			j, 0, 0);											\
+	}															\
+} while (0);
+
+
 u32 global_timer;
 u8 active_port;
 
