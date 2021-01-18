@@ -43,6 +43,7 @@
 #include "modes/mode.h"
 #include "other/tempo.h"
 #include "sysex/sysex.h"
+#include "sequencer/sequencer.h"
 
 
 #define DEBUG_VAR(y, var) do {									\
@@ -56,8 +57,14 @@
 } while (0);
 
 
+#define max(a, b) (((a) > (b)) ? (a) : (b))
+#define min(a, b) (((a) < (b)) ? (a) : (b))
+
+
 u32 global_timer;
 u8 active_port;
+
+struct sequencer sequencer;
 
 void hal_plot_led(u8 type, u8 index, u8 red, u8 green, u8 blue);
 void hal_send_midi(u8 port, u8 status, u8 data1, u8 data2);

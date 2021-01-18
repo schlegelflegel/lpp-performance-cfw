@@ -2,23 +2,18 @@
 #define PLAYHEAD_H
 
 
-struct playhead {
+typedef struct playhead {
+    unsigned int clock;
     unsigned int position;
-    unsigned int thirtysecond;
-    unsigned int sixteenth;
-    unsigned int eighth;
-    unsigned int quarter;
-    unsigned int half;
-    unsigned int whole;
     unsigned int bars;
-};
+} playhead_t;
 
 
-void playhead_init(struct playhead *ph);
+void playhead_init(playhead_t *ph);
 
-void playhead_pulse(struct playhead *ph, unsigned int position_length);
-void playhead_reset(struct playhead *ph);
-void playhead_set(struct playhead *ph, unsigned int clock);
+void playhead_pulse(playhead_t *ph, unsigned int position_length);
+void playhead_reset(playhead_t *ph);
+void playhead_set(playhead_t *ph, unsigned int clock);
 
 
 #endif

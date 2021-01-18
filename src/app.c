@@ -46,6 +46,7 @@ void idle_exit() {
 
 void app_timer_event() {
 	global_timer++;
+	sequencer_update();
 
 	if (idle_enabled && mode < mode_normal - 1 && idle_time <= global_timer) {
 		idle_return = mode;
@@ -122,6 +123,8 @@ void app_sysex_event(u8 port, u8 *d, u16 l) {
 
 void app_init(const u16 *adc_raw) {
 	flash_read();
+	sequencer_init();
 	//mode_update(mode_boot);
+
 	mode_update(mode_sequencing);
 }

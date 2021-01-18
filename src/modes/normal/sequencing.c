@@ -3,37 +3,41 @@
 #include "sequencer/sequencer.h"
 
 
-#define SEQUENCING_PLAYHEAD_LED(pos) (81 + (pos) - 18 * ((pos) >> 3))
+#define SEQUENCING_
 
 
-static struct sequencer seq;
+static const u8 keyboard_layout[] = { 1, 12, 2, 13, 3, 4, 15, 5, 16, 6, 17, 7, 8 };
 
+
+static void sequencer_redraw() {
+	unsigned int x, y, pos, led;
+
+	for (y = 0; y < 4; y++) {
+		for (x = 0; x < 8; x++) {
+			pos = y * 8 + x;
+			led = 81 - 10 * y + x;
+
+			if (pos == sequencer.playhead.position) {
+				rgb_led(led, 0, 63, 0);
+			} else if (pos % 4 == 0) {
+				rgb_led(led, 15, 15, 15);
+			} else {
+				rgb_led(led, 0, 0, 0);
+			}
+		}
+	}
+}
 
 void sequencing_init() {
-	// note mode LED
-	rgb_led(99, mode_sequencing_r, mode_sequencing_g, mode_sequencing_b);
-	active_port = USBSTANDALONE;
+	sequencer_redraw_callback = sequencer_redraw;
 
-	sequencer_init(&seq);
+	sequencer_play();
 }
 
 void sequencing_timer_event() {
-	sequencer_update(&seq);
-
-	// clear playhead area
-	for (unsigned int i = 71; i <= 78; i++) rgb_led(i, 15, 15, 15);
-	for (unsigned int i = 81; i <= 88; i++) rgb_led(i, 15, 15, 15);
-
-	// set playhead color
-	rgb_led(SEQUENCING_PLAYHEAD_LED(seq.ph.sixteenth), 0, 63, 15);
 }
 
 void sequencing_surface_event(u8 p, u8 v, u8 x, u8 y) {
-	// enter Setup mode
-	if (p == 0 && v != 0) {
-		mode_update(mode_setup);
-		return;
-	}
 }
 
 void sequencing_midi_event(u8 port, u8 t, u8 ch, u8 p, u8 v) {}

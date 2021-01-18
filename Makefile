@@ -30,7 +30,7 @@ SOURCES += src/led/led.c src/led/palettes.c
 SOURCES += src/send/send.c
 SOURCES += src/sysex/sysex.c
 SOURCES += src/other/conversion.c src/other/tempo.c
-SOURCES += src/sequencer/playhead.c src/sequencer/sequencer.c
+SOURCES += src/sequencer/playhead.c src/sequencer/pattern.c src/sequencer/sequencer.c
 
 SOURCES += src/modes/mode.c
 SOURCES += src/modes/normal/performance.c src/modes/normal/ableton.c src/modes/normal/note.c src/modes/normal/drum.c src/modes/normal/fader.c src/modes/normal/programmer.c src/modes/normal/piano.c src/modes/normal/sequencing.c src/modes/normal/custom.c src/modes/normal/text.c
@@ -66,7 +66,7 @@ $(INCLUDES) -o
 
 LDSCRIPT = stm32_flash.ld
 
-LDFLAGS += -T$(LDSCRIPT) -u _start -u _Minimum_Stack_Size  -mcpu=cortex-m3 -mthumb -specs=nano.specs -specs=nosys.specs -nostdlib -Wl,-static -N -nostartfiles -Wl,--gc-sections
+LDFLAGS += -T$(LDSCRIPT) -u _start -u _Minimum_Stack_Size  -mcpu=cortex-m3 -mthumb -specs=nano.specs -specs=nosys.specs -nostdlib -Wl,-static -N -nostartfiles -Wl,--gc-sections -Wl,--print-memory-usage
 
 all: $(BIN)
 

@@ -121,6 +121,7 @@ void mode_refresh() {
 void mode_update(u8 x) {
 	clear_led();
 	flash_write();
+	sequencer_redraw_callback = 0;
 	
 	mode = x;
 	(*mode_init[mode])();

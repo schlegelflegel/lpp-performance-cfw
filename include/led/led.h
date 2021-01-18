@@ -7,6 +7,9 @@
 #include "led/palettes.h"
 #include "flash/settings.h"
 
+#define split_rgb(arr) (arr)[0], (arr)[1], (arr)[2]
+#define split_rgb_darker(arr) (arr)[0] >> 2, (arr)[1] >> 2, (arr)[2] >> 2
+
 u8 flash_screen[100][3], pulse_screen[100][3];
 
 void direct_led(u8 p, u8 r, u8 g, u8 b);
